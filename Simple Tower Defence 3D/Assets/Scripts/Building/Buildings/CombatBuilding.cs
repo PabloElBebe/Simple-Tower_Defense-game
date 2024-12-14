@@ -13,7 +13,7 @@ public abstract class CombatBuilding : Building, IAttacker
     public CustomPool<Particles> DestroyParticlesPool;
 
     [SerializeField] protected GameObject Projectile;
-    [SerializeField] protected Transform AttackPoint;
+    [SerializeField] public Transform AttackPoint;
 
     protected void Init(float attackRange, float attackDelay, ProjectileFactory projectileFactory)
     {

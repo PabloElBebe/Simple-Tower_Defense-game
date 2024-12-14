@@ -18,7 +18,7 @@ public class IceProjectileFactory : ProjectileFactory
     {   
         GameObject projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/crystal_projectile_ice");
         GameObject spawned = GameObject.Instantiate(projectilePrefab);
-        spawned.GetComponent<CrystalProjectile>().Init(_building, 1.5f, 1f, 40f, 1f, DamageType.Ice, _attackPoint);
+        spawned.GetComponent<CrystalProjectile>().Init(_building, 6f, 1f, 40f, 1f, DamageType.Ice, _attackPoint);
         CrystalProjectile projectile = spawned.GetComponent<CrystalProjectile>();
 
         return projectile;
@@ -28,7 +28,7 @@ public class IceProjectileFactory : ProjectileFactory
     {
         GameObject projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/shard_projectile_ice");
         GameObject spawned = GameObject.Instantiate(projectilePrefab);
-        spawned.GetComponent<ShardProjectile>().Init(_building, 1f, 4f, 60f, 1f, DamageType.Ice, _attackPoint);
+        spawned.GetComponent<ShardProjectile>().Init(_building, 4f, 4f, 60f, 1f, DamageType.Ice, _attackPoint);
         ShardProjectile projectile = spawned.GetComponent<ShardProjectile>();
 
         return projectile;
@@ -38,7 +38,7 @@ public class IceProjectileFactory : ProjectileFactory
     {
         GameObject projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/hex_projectile_ice");
         GameObject spawned = GameObject.Instantiate(projectilePrefab);
-        spawned.GetComponent<HexProjectile>().Init(_building, 2f, 0.5f, 20f, 1f, DamageType.Ice, _attackPoint);
+        spawned.GetComponent<HexProjectile>().Init(_building, 10f, 0.5f, 15f, 1f, DamageType.Ice, _attackPoint);
         HexProjectile projectile = spawned.GetComponent<HexProjectile>();
 
         return projectile;
