@@ -24,16 +24,13 @@ public abstract class HexTower : CombatBuilding
                 return;
             
             _timer = AttackDelay;
-            ProjectilePoolPool.Get().StartFollowing();
+            ProjectilePool.Get().StartFollowing();
         }
     }
 
     public override Projectile CreateProjectile()
     {
-        GameObject projectile = Instantiate(Projectile, AttackPoint.position, Quaternion.identity);
-        projectile.transform.SetParent(transform);
-        projectile.GetComponent<Projectile>().Init(this, 8, BasicDamage * DamageMult, DamageType, 1f, AttackPoint);
-        
+        Projectile projectile = ProjectileFactory.CreateHexProjectile();
         return projectile.GetComponent<Projectile>();
     }
 }

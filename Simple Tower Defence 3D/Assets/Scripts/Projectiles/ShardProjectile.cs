@@ -20,6 +20,6 @@ public class ShardProjectile : Projectile
             Rigidbody.velocity = direction * MoveSpeed;
         }
         else
-            _building.ProjectilePoolPool.Release(gameObject);
+            _building.ProjectilePool.Release(gameObject);
     }
 }

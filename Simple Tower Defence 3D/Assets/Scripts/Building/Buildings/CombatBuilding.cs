@@ -4,31 +4,25 @@ using UnityEngine;
 
 public abstract class CombatBuilding : Building, IAttacker
 {
-    protected float BasicDamage;
-    protected float DamageMult;
     protected float AttackRange;
     protected float AttackDelay;
 
-    protected DamageType DamageType;
+    protected ProjectileFactory ProjectileFactory;
     
-    public CustomPool<Projectile> ProjectilePoolPool;
+    public CustomPool<Projectile> ProjectilePool;
     public CustomPool<Particles> DestroyParticlesPool;
 
     [SerializeField] protected GameObject Projectile;
     [SerializeField] protected Transform AttackPoint;
 
-    protected void Init(float attackRange, float attackDelay, float damage, DamageType damageType, float damageMult, GameObject projectile)
+    protected void Init(float attackRange, float attackDelay, ProjectileFactory projectileFactory)
     {
         AttackRange = attackRange;
         AttackDelay = attackDelay;
-        BasicDamage = damage;
-        DamageMult = damageMult;
-        Projectile = projectile;
+        ProjectileFactory = projectileFactory;
 
-        DamageType = damageType;
-
-        ProjectilePoolPool = new ProjectilePool(GetComponent<CombatBuilding>(), 3);
-        DestroyParticlesPool = new DestroyParticlesPool(projectile.GetComponent<Projectile>().DestroyParticles, transform, 1);
+        ProjectilePool = new ProjectilePool(GetComponent<CombatBuilding>(), 3);
+        DestroyParticlesPool = ProjectileFactory.DestroyParticlesPool;
     }
 
     public abstract void Attack();

@@ -5,25 +5,26 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] private GameObject _destroyParticles;
-    
+
     protected float MoveSpeed;
     protected float LifeTime;
     protected float Timer;
     private Transform _attackPoint;
 
     private float _damage;
+    private float _damageMult;
     private DamageType _damageType;
-    
+
     private bool _isFollowing;
 
     protected CombatBuilding _building;
-    
+
     protected Transform CurrentTransform;
     protected Rigidbody Rigidbody;
 
     public bool IsFollowing => _isFollowing;
     public GameObject DestroyParticles => _destroyParticles;
-    
+
     private void Update()
     {
         if (_isFollowing)
@@ -43,13 +44,13 @@ public abstract class Projectile : MonoBehaviour
     public void StopFollowing()
     {
         _building.DestroyParticlesPool.Get().Play(transform.position);
-        
+
         _isFollowing = false;
         gameObject.SetActive(false);
     }
 
     protected abstract void FollowTarget();
-    
+
     private void OnCollisionEnter(Collision col)
     {
         if (col.collider.GetComponent<Enemy>() == null)
@@ -57,9 +58,9 @@ public abstract class Projectile : MonoBehaviour
 
         col.collider.GetComponent<IDamagable>().GetDamage(_damage, _damageType);
 
-        _building.ProjectilePoolPool.Release(gameObject);
+        _building.ProjectilePool.Release(gameObject);
     }
-    
+
     protected Transform FindNewTarget()
     {
         List<GameObject> enemies = (List<GameObject>)EnemiesData.Enemies;
@@ -67,8 +68,8 @@ public abstract class Projectile : MonoBehaviour
             return null;
 
         GameObject currentEnemy = enemies[0];
-        
-        foreach (GameObject enemy in enemies.Where(enemy => Vector3.Distance(enemy.transform.position, transform.position) < 
+
+        foreach (GameObject enemy in enemies.Where(enemy => Vector3.Distance(enemy.transform.position, transform.position) <
                                                             Vector3.Distance(currentEnemy.transform.position, transform.position)))
         {
             currentEnemy = enemy;
@@ -76,14 +77,15 @@ public abstract class Projectile : MonoBehaviour
 
         return currentEnemy.transform;
     }
-    
-    public void Init(CombatBuilding building, float moveSpeed, float damage, DamageType damageType, float lifetime, Transform attackPoint)
+
+    public void Init(CombatBuilding building, float moveSpeed, float lifetime, float damage, float damageMult, DamageType damageType, Transform attackPoint)
     {
         MoveSpeed = moveSpeed;
         LifeTime = lifetime;
         Timer = 0;
         _attackPoint = attackPoint;
         _damage = damage;
+        _damageMult = damageMult;
         _damageType = damageType;
 
         _building = building;
