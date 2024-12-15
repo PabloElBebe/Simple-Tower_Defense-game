@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : Unit, IWalking, IDamagable
+public abstract class Enemy : Unit, IWalking, IDamagableWithEffects
 {
     protected void Init(float health, float armor, List<Transform> path, float speedMult)
     {
@@ -11,18 +11,8 @@ public abstract class Enemy : Unit, IWalking, IDamagable
         StartCoroutine(GoByThePath(path, speedMult));
     }
 
-    public void GetDamage(float damage, DamageType damageType)
+    public void GetDamage(float damage)
     {
-        switch (damageType)
-        {
-            case DamageType.Fire:
-                
-                break;
-            case DamageType.Ice:
-                
-                break;
-        }
-        
         if (damage < 0)
             throw new ArgumentOutOfRangeException();
 
@@ -32,6 +22,19 @@ public abstract class Enemy : Unit, IWalking, IDamagable
         {
             EnemiesData.RemoveEnemy(gameObject);
             Destroy(gameObject);
+        }
+    }
+
+    public void GetEffect(DamageType damageType)
+    {
+        switch (damageType)
+        {
+            case DamageType.Fire:
+                
+                break;
+            case DamageType.Ice:
+                
+                break;
         }
     }
     

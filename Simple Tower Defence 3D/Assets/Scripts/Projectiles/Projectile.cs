@@ -56,7 +56,8 @@ public abstract class Projectile : MonoBehaviour
         if (col.collider.GetComponent<Enemy>() == null)
             return;
 
-        col.collider.GetComponent<IDamagable>().GetDamage(_damage, _damageType);
+        col.collider.GetComponent<IDamagableWithEffects>().GetDamage(_damage);
+        col.collider.GetComponent<IDamagableWithEffects>().GetEffect(_damageType);
 
         _building.ProjectilePool.Release(gameObject);
     }
