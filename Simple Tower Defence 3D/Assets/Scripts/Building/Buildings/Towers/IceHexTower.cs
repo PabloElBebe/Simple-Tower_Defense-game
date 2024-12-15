@@ -2,7 +2,7 @@
 
 public class IceHexTower : HexTower
 {
-    public void Init(float attackRange, float attackDelay, ProjectileFactory projectileFactory)
+    public new void Init(float attackRange, float attackDelay, ProjectileFactory projectileFactory)
     {
         base.Init(attackRange, attackDelay, projectileFactory);
     }

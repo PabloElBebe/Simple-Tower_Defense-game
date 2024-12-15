@@ -5,9 +5,12 @@ using UnityEngine;
 
 public abstract class Enemy : Unit, IWalking, IDamagableWithEffects
 {
+    private float _effectSpeedMult;
+    
     protected void Init(float health, float armor, List<Transform> path, float speedMult)
     {
         base.Init(health, armor);
+        _effectSpeedMult = 1;
         StartCoroutine(GoByThePath(path, speedMult));
     }
 
@@ -33,8 +36,13 @@ public abstract class Enemy : Unit, IWalking, IDamagableWithEffects
                 
                 break;
             case DamageType.Ice:
-                
+                _effectSpeedMult -= 0.15f;
+
+                if (_effectSpeedMult < 0.4f)
+                    _effectSpeedMult = 0.4f;
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(damageType), damageType, null);
         }
     }
     
@@ -49,7 +57,7 @@ public abstract class Enemy : Unit, IWalking, IDamagableWithEffects
             while (Vector3.Distance(transform.position, currentPos) > 0.1f)
             {
                 Vector3 direction = (currentPos - transform.position).normalized;
-                transform.Translate(direction * Time.deltaTime * speedMult, Space.World);
+                transform.Translate(direction * Time.deltaTime * speedMult * _effectSpeedMult, Space.World);
                 yield return new WaitForFixedUpdate();
             }
         }
