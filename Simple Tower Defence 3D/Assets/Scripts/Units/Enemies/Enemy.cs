@@ -33,7 +33,7 @@ public abstract class Enemy : Unit, IWalking, IDamagableWithEffects
         switch (damageType)
         {
             case DamageType.Fire:
-                
+                Debug.Log("Fire");
                 break;
             case DamageType.Ice:
                 _effectSpeedMult -= 0.15f;
