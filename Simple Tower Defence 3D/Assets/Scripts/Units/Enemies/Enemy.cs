@@ -24,7 +24,7 @@ public abstract class Enemy : Unit, IWalking, IDamagableWithEffects
         if (Health == 0)
         {
             EnemiesData.RemoveEnemy(gameObject);
-            Destroy(gameObject);
+            Kill();
         }
     }
 
@@ -65,6 +65,12 @@ public abstract class Enemy : Unit, IWalking, IDamagableWithEffects
         }
     }
 
+    private void Kill()
+    {
+        MoneyController.Instance.IncreaseMoney(100);
+        Destroy(gameObject);
+    }
+    
     private void RotateToPoint(Vector3 currentPos, Vector3 pointPos)
     {
         transform.localRotation = Quaternion.LookRotation(currentPos - pointPos);
