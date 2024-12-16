@@ -219,11 +219,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2012775668498390429}
-  - component: {fileID: 7245132723230721036}
+  - component: {fileID: -6984067837437716525}
   - component: {fileID: 7836951541840486252}
   - component: {fileID: 8394017325894917591}
   m_Layer: 0
-  m_Name: elf_basic
+  m_Name: elf_tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,13 +240,13 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8584062262730448386}
   - {fileID: 8680518474825013615}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7245132723230721036
+--- !u!114 &-6984067837437716525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2109428296917169317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1435944f4f944e2090a60eb4afc67f2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f0bfc44c9d14a6496a27286d8b80fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &7836951541840486252
@@ -277,10 +277,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.35871845
-  m_Height: 2.7867033
+  m_Radius: 0.4072418
+  m_Height: 2.586974
   m_Direction: 1
-  m_Center: {x: -0.0067276955, y: 0.5272323, z: 0}
+  m_Center: {x: 0.000000029802322, y: 0.42736757, z: 0}
 --- !u!95 &8394017325894917591
 Animator:
   serializedVersion: 5
@@ -330,7 +330,7 @@ Transform:
   m_GameObject: {fileID: 5667540635994129414}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.604, z: 0}
+  m_LocalPosition: {x: 0, y: 1.417, z: 0}
   m_LocalScale: {x: 0.45, y: 0.60725, z: 0.45}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -437,8 +437,8 @@ Transform:
   m_GameObject: {fileID: 8194749366304943277}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2307, z: 0}
-  m_LocalScale: {x: 0.7, y: 1.0981683, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0.1348, z: 0}
+  m_LocalScale: {x: 0.8, y: 1.0023096, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2012775668498390429}
