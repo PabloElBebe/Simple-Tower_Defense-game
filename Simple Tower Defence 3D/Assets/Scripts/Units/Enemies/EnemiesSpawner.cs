@@ -39,6 +39,13 @@ public class EnemiesSpawner : MonoBehaviour
     {
         while (true)
         {
+            _currentFactory = Random.Range(0, 2) switch
+            {
+                0 => new OrcFactory(),
+                1 => new ElfFactory(),
+                _ => throw new ArgumentOutOfRangeException()
+            };
+                
             Enemy enemy = Random.Range(0, 3) switch
             {
                 0 => _currentFactory.CreateBasic(_pathPoints),
@@ -46,11 +53,11 @@ public class EnemiesSpawner : MonoBehaviour
                 2 => _currentFactory.CreateTank(_pathPoints),
                 _ => throw new ArgumentOutOfRangeException()
             };
-
+            
             Vector3 currentPos = new Vector3(_pathPoints[0].transform.position.x, 1.25f, _pathPoints[0].transform.position.z);
             enemy.transform.position = currentPos;
             EnemiesData.AddEnemy(enemy.gameObject);
-
+            
             yield return new WaitForSeconds(_time);
         }
     }

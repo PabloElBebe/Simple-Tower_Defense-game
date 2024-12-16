@@ -8,7 +8,7 @@ public class OrcFactory : EnemyFactory
         GameObject prefab = Resources.Load<GameObject>("Prefabs/orc_tank");
         GameObject spawned = GameObject.Instantiate(prefab);
         TankEnemy orc = spawned.GetComponent<TankEnemy>();
-        orc.Init(200, 100, path, 1);
+        orc.Init(400, 200, path, 1);
 
         return orc;
     }
@@ -18,7 +18,7 @@ public class OrcFactory : EnemyFactory
         GameObject prefab = Resources.Load<GameObject>("Prefabs/orc_basic");
         GameObject spawned = GameObject.Instantiate(prefab);
         BasicEnemy orc = spawned.GetComponent<BasicEnemy>();
-        orc.Init(100, 50, path, 2);
+        orc.Init(250, 100, path, 2);
 
         return orc;
     }
@@ -28,7 +28,7 @@ public class OrcFactory : EnemyFactory
         GameObject prefab = Resources.Load<GameObject>("Prefabs/orc_light");
         GameObject spawned = GameObject.Instantiate(prefab);
         LightEnemy orc = spawned.GetComponent<LightEnemy>();
-        orc.Init(70, 30, path, 3);
+        orc.Init(150, 75, path, 3);
 
         return orc;
     }

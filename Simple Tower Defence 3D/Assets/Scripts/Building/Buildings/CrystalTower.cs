@@ -31,6 +31,6 @@ public abstract class CrystalTower : CombatBuilding
     public override Projectile CreateProjectile()
     {
         Projectile projectile = ProjectileFactory.CreateCrystalProjectile();
-        return projectile.GetComponent<Projectile>();
+        return projectile;
     }
 }

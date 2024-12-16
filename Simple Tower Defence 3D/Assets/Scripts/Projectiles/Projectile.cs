@@ -25,6 +25,23 @@ public abstract class Projectile : MonoBehaviour
     public bool IsFollowing => _isFollowing;
     public GameObject DestroyParticles => _destroyParticles;
 
+    public void Init(CombatBuilding building, float moveSpeed, float lifetime, float damage, float damageMult, DamageType damageType, Transform attackPoint)
+    {
+        MoveSpeed = moveSpeed;
+        LifeTime = lifetime;
+        Timer = 0;
+        _attackPoint = attackPoint;
+        _damage = damage;
+        _damageMult = damageMult;
+        _damageType = damageType;
+
+        _building = building;
+        CurrentTransform = FindNewTarget();
+        Rigidbody = GetComponent<Rigidbody>();
+
+        gameObject.SetActive(false);
+    }
+    
     private void Update()
     {
         if (_isFollowing)
@@ -77,22 +94,5 @@ public abstract class Projectile : MonoBehaviour
         }
 
         return currentEnemy.transform;
-    }
-
-    public void Init(CombatBuilding building, float moveSpeed, float lifetime, float damage, float damageMult, DamageType damageType, Transform attackPoint)
-    {
-        MoveSpeed = moveSpeed;
-        LifeTime = lifetime;
-        Timer = 0;
-        _attackPoint = attackPoint;
-        _damage = damage;
-        _damageMult = damageMult;
-        _damageType = damageType;
-
-        _building = building;
-        CurrentTransform = FindNewTarget();
-        Rigidbody = GetComponent<Rigidbody>();
-
-        gameObject.SetActive(false);
     }
 }

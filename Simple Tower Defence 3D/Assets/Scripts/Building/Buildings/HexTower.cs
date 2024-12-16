@@ -31,6 +31,6 @@ public abstract class HexTower : CombatBuilding
     public override Projectile CreateProjectile()
     {
         Projectile projectile = ProjectileFactory.CreateHexProjectile();
-        return projectile.GetComponent<Projectile>();
+        return projectile;
     }
 }

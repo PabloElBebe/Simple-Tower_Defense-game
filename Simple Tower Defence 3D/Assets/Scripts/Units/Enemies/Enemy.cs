@@ -33,7 +33,9 @@ public abstract class Enemy : Unit, IWalking, IDamagableWithEffects
         switch (damageType)
         {
             case DamageType.Fire:
-                Debug.Log("Fire");
+                IFlammable flammable = GetComponent<IFlammable>();
+                if (flammable != null)
+                    StartCoroutine(flammable.Flame());
                 break;
             case DamageType.Ice:
                 _effectSpeedMult -= 0.15f;
@@ -45,7 +47,7 @@ public abstract class Enemy : Unit, IWalking, IDamagableWithEffects
                 throw new ArgumentOutOfRangeException(nameof(damageType), damageType, null);
         }
     }
-    
+
     public IEnumerator GoByThePath(List<Transform> path, float speedMult)
     {
         foreach (Transform point in path)

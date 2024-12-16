@@ -31,6 +31,6 @@ public abstract class ShardTower : CombatBuilding
     public override Projectile CreateProjectile()
     {
         Projectile projectile = ProjectileFactory.CreateShardProjectile();
-        return projectile.GetComponent<Projectile>();
+        return projectile;
     }
 }
