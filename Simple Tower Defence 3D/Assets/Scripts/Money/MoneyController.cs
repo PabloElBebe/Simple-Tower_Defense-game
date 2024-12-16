@@ -17,6 +17,11 @@ public class MoneyController : MonoBehaviour
         _moneyCounter = new MoneyCounter(_moneyVisualizer);
     }
 
+    private void Start()
+    {
+        IncreaseMoney(1000);
+    }
+
     public void DecreaseMoney(int amount)
     {
         if (amount < 0)

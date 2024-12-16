@@ -2,8 +2,8 @@
 
 public class IceHexTower : HexTower
 {
-    public new void Init(float attackRange, float attackDelay, ProjectileFactory projectileFactory)
+    public new void Init(int price, float attackRange, float attackDelay, ProjectileFactory projectileFactory)
     {
-        base.Init(attackRange, attackDelay, projectileFactory);
+        base.Init(price, attackRange, attackDelay, projectileFactory);
     }
 }

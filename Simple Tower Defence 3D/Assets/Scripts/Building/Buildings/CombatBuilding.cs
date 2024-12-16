@@ -15,8 +15,10 @@ public abstract class CombatBuilding : Building, IAttacker
     [SerializeField] protected GameObject Projectile;
     [SerializeField] public Transform AttackPoint;
 
-    protected void Init(float attackRange, float attackDelay, ProjectileFactory projectileFactory)
+    protected void Init(int price, float attackRange, float attackDelay, ProjectileFactory projectileFactory)
     {
+        base.Init(price);
+        
         AttackRange = attackRange;
         AttackDelay = attackDelay;
         ProjectileFactory = projectileFactory;

@@ -2,10 +2,15 @@
 
 public abstract class Building : MonoBehaviour
 {
-    protected float Price;
+    public int Price;
 
     protected bool IsPlaced;
 
+    public void Init(int price)
+    {
+        Price = price;
+    }
+    
     public void Place()
     {
         IsPlaced = true;

@@ -51,7 +51,7 @@ public class BuildingSystem : MonoBehaviour
         _currentObject.transform.SetParent(GetNearestAnchor(currentPos));
         _currentObject.transform.localPosition = new Vector3(0, 1, 0);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && MoneyController.Instance.GetMoneyAmount() >= _currentObject.GetComponent<Building>().Price)
             PlaceBuilding();
         if (Input.GetMouseButtonDown(1))
             Destroy(_currentObject);
@@ -62,6 +62,7 @@ public class BuildingSystem : MonoBehaviour
         Buildings.Add(_currentObject);
         _currentObject.GetComponent<Building>().Place();
         _currentObject.transform.parent.GetComponent<BuildingAnchor>().PlaceBuilding(_currentObject);
+        MoneyController.Instance.DecreaseMoney(_currentObject.GetComponent<Building>().Price);
         _currentObject = null;
     }
 
